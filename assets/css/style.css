@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: url("/./assets/images/4k-space-wallpaper-1.jpg");
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+
+.right {
+    padding-top: 250px;
+    
+}
+
+/* Animation */
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.right button {
+    width: 80px;
+    height: 80px;
+    padding: .5rem;
+    border-radius: 75%;
+    background-color: black;
+    border: 2px solid transparent;
+    cursor: pointer;
+    animation: float 6s ease-in-out infinite;    
+}
+
+
+
+.right button span {
+    color: white;
+    font-size: 50px;
+    
+}
+
+
+/* ----------------Modal-------------------- */
+.modal {
+    visibility: hidden;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    padding: 20px 50px;
+}
+
+.modal .modal-content {
+    background: url('/assets/images/wallpapersden.com_black-hole-gravity-4k_3840x2160.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+
+}
+
+.modal .modal-content .form {
+    width: 70%;
+    padding: 10px 0;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 4px 2px;
+    cursor: pointer;
+    color: white;
+}
+
+.close:hover {
+    background-color: #4285F4;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.modal h2 {
+    padding: 1rem 0;
+    color: black;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+.modal .form .form-element {
+    margin: 12px 0;
+}
+
+.modal .form .form-element label {
+    font-size: 1.15rem;
+    color: white;
+    
+}
+
+.modal .form .form-element input[type="text"],
+.modal .form .form-element input[type="date"],
+.modal .form .form-element select,
+.modal .form .form-element textarea {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px 2px;
+    border: 0px solid black;
+    background-color: #757575;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.modal .form .form-element button {
+    height: 25px;
+    width: 10%;
+    outline: none;
+    border: 1px solid transparent;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+}
+
+.modal .form .form-element button:hover {
+    background-color: #4285F4;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+/* End of Modal */
+
+
+
+
+header h1 {
+    text-align: left;
+    padding: 250px 0px 50px 15px ;
+    font-size: 4rem;
+    font-weight: 300;
+    color: white;
+}
+
+
+
+
+
+/* ---------------Columns--------------- */
+.container {
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.container span {
+    color: white;
+    background-color: black;
+}
+
+.container h2 {
+    text-align: start;
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 300;
+    font-family: 'Oswald', sans-serif;
+    
+}
+
+.container .column-1 {
+    /* background-color: #e4e4e4; */
+    height: auto;
+    width: 20%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container .column-1 h2 {
+    background-color: #4285F4;
+    width: min-content;
+    border-radius: 10px;
+}
+
+.container .column-2 {
+    /* background-color: #e4e4e4; */
+    height: 50vh;
+    width: 20%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container .column-2 h2 {
+    background-color: #bb1e10;
+    width: max-content;
+    border-radius: 10px;
+}
+
+.container .column-3 {
+    /* background-color: #e4e4e4; */
+    height: 50vh;
+    width: 20%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container .column-3 h2 {
+    background-color: #f7b500;
+    width: min-content;
+    border-radius: 10px;
+}
+
+.container .column-4 {
+    /* background-color: #e4e4e4; */
+    height: 50vh;
+    width: 20%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container .column-4 h2 {
+    background-color: #32a431;
+    width: min-content;
+    border-radius: 10px;
+}
+/* End of columns */
+
+
+
+
+/* ---------------------Card---------------------- */
+.transition-card {
+    background-color: #757575;
+    color: white;
+    font-weight: bolder;
+    margin: 10px 0;
+    border: 2px solid black;
+    width: 60%;
+    height: fit-content;
+}
+
+.transition-card .card-name {
+    text-align: start;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+.transition-card .card-info {
+    color: black;
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.25rem;
+    border: 1px  black;
+    box-shadow: inset 0px 0px 10px #8d9093;
+    
+}
+
+.transition-card .due-date {
+    text-align: right;
+    font-weight: 300;
+}
+
+.reset {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding : 15px;
+}
+
+.reset button {
+    font-size: 18px;
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.35);
+}
