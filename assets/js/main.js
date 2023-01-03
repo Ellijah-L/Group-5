@@ -1,47 +1,67 @@
 // Allows button to open/close the modal
-const modal = document.getElementById('modal'); 
-const button = document.getElementById('addcard');
-const closeButton = document.getElementById('close-btn');
+const modal = document.getElementById("modal");
+const button = document.getElementById("addcard");
+const closeButton = document.getElementById("close-btn");
+
+button.onclick = function () {
+  modal.style.visibility = "visible";
+};
+
+closeButton.onclick = function () {
+  modal.style.visibility = "hidden";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.visibility = "hidden";
+  }
+};
+
+////////////////////////////////Validate Form Input////////////////////////////////////////
+function validFormFieldInput(data) {
+ const taskNameInput = document.querySelector("#task");
+ const name = taskNameInput.value;
 
 
-button.onclick = function() {
-    modal.style.visibility = 'visible';
-}
-
-closeButton.onclick = function() {
-    modal.style.visibility = 'hidden';
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.visibility = 'hidden';
-    }
-}
-
-// // Get a reference to the form and card elements
-// const form = document.getElementById('form');
-// const card = document.getElementById('card-template');
-// const createCard = document.getElementById('submit');
-
-// // Add onclick event to the button to create a new card
-// form.onclick = function() {
-//     event.preventDefault();
-//     var newTask = generateCard;
-
-// }
+ const descriptionInput = document.querySelector("#description");
+ const description = descriptionInput.value;
 
 
-// function generateCard() {
-//     var newCard = card.content.cloneNode(true);
-//     var cardHTML = card.innerHTML;
-//     var taskName = document.getElementById('name').value;
-//     var description = document.getElementById('task-info').value;
-//     var dueDate = document.getElementById('date').value;
-//     newCard = cardHTML.replace("{{Name}}", taskName);
-//     newCard = cardHTML.replace("{{Lorem}}", description);
-//     newCard = cardHTML.replace("{{Due}}", dueDate);
-//     var newTask = document.createElement('div');
-//     newTask.innerHTML = cardHTML;
-//     return newTask;
+ const dateInput = document.querySelector("#date");
+ const date = dateInput.value;
+
+
+ const assignInput = document.querySelector("#assign");
+ const assignedTo = assignInput.value;
+
+
+ const statusInput = document.querySelector("#status");
+ const status = statusInput.value;
+
+
+ 
+};
+
+const taskManager = new TaskManager();
+taskManager.addTask('Ava', 'do the laundry', 'just do it', '2022-12-23', 'TODO');
+taskManager.addTask('Ava', 'do the laundry', 'just do it', '2022-12-23', 'TODO');
+taskManager.addTask('Ava', 'do the laundry', 'just do it', '2022-12-23', 'TODO');
+console.log(taskManager.tasks);
+
+const form = document.querySelector('#form');
+
+form.addEventListener('submit', (event) => {
+    //Prevent default submit event
+    event.preventDefault();
+    validFormFieldInput(data);
+
+    taskManager.addTask(name, description, assignedTo, dueDate, status);
     
-// }
+
+    name = '';
+    description = "";
+    assignedTo = "";
+    status = "";
+    date = '';
+
+})

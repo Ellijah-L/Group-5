@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task List</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/taskmanager.js" defer></script>
     <script src="./assets/js/main.js" defer></script>
     <script
       src="https://kit.fontawesome.com/f3da2e9849.js"
@@ -41,71 +42,55 @@
         <button id="addcard">
           <span class="material-symbols-outlined"> add </span>
         </button>
-        <!-- modal -->
       </div>
+        <!-- modal -->
       <div class="modal" id="modal">
+        <div class="close" id="close-btn">
+          <span class="material-symbols-outlined"> close </span>
+        </div>
         <div class="modal-content">
-          <div class="close" id="close-btn">
-            <span class="material-symbols-outlined"> close </span>
-          </div>
-          <div class="form" id="form">
-            <h2>New Task</h2>
-            <div class="form-element">
-              <label for="name">Task Name:</label>
-              <input type="text" id="name" />
-            </div>
-            <div class="form-element">
-              <label for="assign">Assign To:</label>
-              <select name="assign" id="assign">
-                <option value="Ava">Ava</option>
-                <option value="Ellijah">Ellijah</option>
-                <option value="Jaira">Jaira</option>
-                <option value="Maurice">Maurice</option>
-                <option value="Oliver">Oliver</option>
-              </select>
-            </div>
-            <div class="form-element">
-              <label for="date">Due Date:</label>
-              <input type="date" name="date" id="date" />
-            </div>
-            <div class="form-element">
-              <label for="task-info">Description:</label>
-              <textarea
-                name="task-info"
-                id="task-info"
-                cols="30"
-                rows="5"
-              ></textarea>
-            </div>
-            <div class="form-element">
-              <button class="submit" id="submit">Submit</button>
-            </div>
-          </div>
+          <h2>New Task</h2>
+          <form class="form" id="form">
+            <label for="task">Task Name</label>
+            <input type="text" id="task">
+            <label for="description">Description</label>
+            <input type="text" id="description">
+            <label for="assign">Assign to</label>
+            <input type="text" id="assign">
+            <label for="date">Due Date</label>
+            <input type="date" id="date">
+            <label for="status">Status</label>
+            <select name="status" id="status">
+              <option value="ToDo">To-Do</option>
+              <option value="done">Done</option>
+            </select>
+            <input type="button" value="submit" class="button">
+            <div class="alert" role="alert">Please fill out all fields!</div>
+          </form>
         </div>
       </div>
     </header>
 
-    <!-- ----------------------Columns------------------------------------ -->
-    <div class="container">
+    <!------------------------Columns-------------------------------------->
+    <div class="container" id="container">
       <div class="column-1">
+        <div class="column-heading">
         <span class="material-symbols-rounded"> space_dashboard </span>
         <h2>Task</h2>
-
-        <template id="card-template">
-          <div class="transition-card" id="card">
-            <h3 class="card-name">{{Name}}</h3>
-            <p class="card-info" id="card-info">
-              {{Lorem}}
-            </p>
-            <p class="due-date" id="due-date">{{Due}}</p>
-          </div>
-        </template>
       </div>
 
-      <div class="column-2">
-        <span class="fa-solid fa-user-astronaut"></span>
-        <h2>In Progress</h2>
+      <div class="card">
+        <div class="card-head">
+          <h3 class="task-name">Task Name</h3>
+        </div>
+        <div class="card-body">
+          <p class="description">Description</p>
+          <p class="assignment">Person</p>
+          <p class="date">MM/DD/YYYY</p>
+        </div>
       </div>
+      </div>
+
 
       <div class="column-3">
         <span class="material-symbols-rounded"> rocket </span>
