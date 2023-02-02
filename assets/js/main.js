@@ -1,3 +1,11 @@
+const taskManager = new TaskManager();
+const error = document.getElementById('error');
+const taskHtml = createTaskHtml();
+taskManager.load();
+taskManager.render();
+
+
+
 // Allows button to open/close the modal
 const modal = document.getElementById("modal");
 const button = document.getElementById("addcard");
@@ -18,50 +26,102 @@ window.onclick = function (event) {
 };
 
 ////////////////////////////////Validate Form Input////////////////////////////////////////
-function validFormFieldInput(data) {
- const taskNameInput = document.querySelector("#task");
- const name = taskNameInput.value;
+function validFormFieldInput() {
+  const taskNameInput = document.querySelector('#task');
+  const name = taskNameInput.value;
+  
 
+  const taskDescriptionInput = document.querySelector('#description');
+  const description = taskDescriptionInput.value;
+  
 
- const descriptionInput = document.querySelector("#description");
- const description = descriptionInput.value;
-
-
- const dateInput = document.querySelector("#date");
- const date = dateInput.value;
-
-
- const assignInput = document.querySelector("#assign");
- const assignedTo = assignInput.value;
-
-
- const statusInput = document.querySelector("#status");
- const status = statusInput.value;
-
-
+  const assignedToInput = document.querySelector('#assign');
+  const assignedTo = assignedToInput.value;
  
-};
+  const dueDateInput = document.querySelector('#date');
+  const dueDate = dueDateInput.value;
+ 
+  const statusInput = document.querySelector('#status');
+  const status = statusInput.value;
+  
 
-const taskManager = new TaskManager();
-taskManager.addTask('Ava', 'do the laundry', 'just do it', '2022-12-23', 'TODO');
-taskManager.addTask('Ava', 'do the laundry', 'just do it', '2022-12-23', 'TODO');
-taskManager.addTask('Ava', 'do the laundry', 'just do it', '2022-12-23', 'TODO');
-console.log(taskManager.tasks);
+  if (!name || !description || !assignedTo || !dueDate || !status) {
+    error.style.display = "block";
+    return false;
+  }
+  error.style.display = 'none';
+  return true;
+}
 
+//////////////////////////////Adding Tasks with the Form//////////////////////////////////
 const form = document.querySelector('#form');
 
-form.addEventListener('submit', (event) => {
-    //Prevent default submit event
-    event.preventDefault();
-    validFormFieldInput(data);
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  if (!validFormFieldInput()) {
+    return;
+  }
+  const taskNameInput = document.querySelector('#task');
+  const name = taskNameInput.value;
 
-    taskManager.addTask(name, description, assignedTo, dueDate, status);
-    
+  const taskDescriptionInput = document.querySelector('#description');
+  const description = taskDescriptionInput.value;
 
-    name = '';
-    description = "";
-    assignedTo = "";
-    status = "";
-    date = '';
+  const assignedToInput = document.querySelector('#assign');
+  const assignedTo = assignedToInput.value;
 
-})
+  const dueDateInput = document.querySelector('#date');
+  const dueDate = dueDateInput.value;
+
+  const statusInput = document.querySelector('#status');
+  const status = statusInput.value;
+  
+  taskManager.addTask(name, description, assignedTo, dueDate, status);
+  taskManager.render();
+  taskManager.save();
+  taskNameInput.value = '';
+  taskDescriptionInput.value = '';
+  assignedToInput.value = '';
+  dueDateInput.value = '';
+});
+
+
+////////////////////////////Change card status////////////////////////////////////////////
+const taskList = document.querySelector('#list-group')
+
+taskList.addEventListener('click', (event) => {
+  if (event.target.classList.contains('doneBtn')) {
+    const parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
+    const taskId = Number(parentTask.getAttribute('data-task-id'));
+    const task = taskManager.getTaskById(taskId);
+    task.status = 'Done';
+
+    //Move to the next column
+    const nextColumn = document.querySelector('.completed-list-group')
+    nextColumn.appendChild(parentTask);
+
+    taskManager.render();
+
+  }
+
+  if (event.target.classList.contains('deleteBtn')) {
+    const parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
+    const taskId = Number(parentTask.getAttribute('data-task-id'));
+    taskManager.deleteTask(taskId);
+    taskManager.save();
+    taskManager.render();
+  }
+});
+
+const completedListGroup = document.querySelector('#completed-list-group');
+completedListGroup.addEventListener('click', (event) => {
+  if (event.target.classList.contains('deleteBtn')) {
+    const parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
+    const nextColumn = document.querySelector('.completed-list-group');
+    nextColumn.removeChild(parentTask);
+  }
+});
+
+
+

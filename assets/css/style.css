@@ -6,10 +6,11 @@
 
 
 body {
-    background: url("/./assets/images/4k-space-wallpaper-1.jpg");
+    background: url("/assets/images/wp2939697.jpg");
     background-position: 0px 0px;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height: auto;
 }
 
@@ -71,7 +72,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.75);
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
     padding: 20px 50px;
@@ -149,7 +150,7 @@ header {
 }
 
 
-.modal form .button {
+.modal form button {
     height: 25px;
     width: 100%;
     outline: none;
@@ -163,7 +164,7 @@ header {
     text-transform: capitalize;
 }
 
-.modal form  .button:hover {
+.modal form button:hover {
     background-color: #4285F4;
     color: #fff;
     border-radius: 5px;
@@ -171,7 +172,7 @@ header {
 }
 
 .modal form .alert {
-    visibility: hidden;
+    display: none;
     color: white;
     border: 1px solid red;
     background-color: rgba(255, 0, 0, 0.35);
@@ -191,6 +192,7 @@ header h1 {
     font-size: 4rem;
     font-weight: 300;
     color: white;
+    font-family: 'Space Mono', sans-serif;
 }
 
 
@@ -222,8 +224,8 @@ header h1 {
 
 .container .column-1 {
     /* background-color: #e4e4e4; */
-    height: 50vh;
-    width: 20%;
+    height: auto;
+    width: 40%;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -235,46 +237,17 @@ header h1 {
     border-radius: 10px;
 }
 
-.container .column-2 {
-    /* background-color: #e4e4e4; */
-    height: 50vh;
-    width: 20%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.column-2 span {
-    height: 24px;
-    width: 24px;
-    font-size: 20px;
-}
-
-.container .column-2 h2 {
-    background-color: #bb1e10;
-    width: max-content;
-    border-radius: 10px;
-}
-
-.container .column-3 {
-    /* background-color: #e4e4e4; */
-    height: 50vh;
-    width: 20%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.container .column-3 h2 {
-    background-color: #f7b500;
-    width: min-content;
-    border-radius: 10px;
-}
-
 .container .column-4 {
     /* background-color: #e4e4e4; */
-    height: 50vh;
-    width: 20%;
+    height: auto;
+    width: 40%;
     border-radius: 10px;
-    overflow: hidden;
+    flex-direction: column-reverse;
+    
+}
+
+.container .column-4 ul {
+    list-style: none;
 }
 
 .container .column-4 h2 {
@@ -285,8 +258,8 @@ header h1 {
 /* End of columns */
 
 /* ------------------------------Card---------------------------------- */
-.card {
-    visibility: hiden;
+ul li .card {
+    display: block;
     background: url(/assets/images/desktop-wallpaper-galaxy-planet.jpg);
     color: white;
     background-position: 0px 0px;
@@ -296,9 +269,11 @@ header h1 {
     height: max-content;
 }
 
-.card .card-head h3 {
+ul li .card .card-head h3 {
     text-align: center;
     font-size: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
 }
 
 .card .card-body {
@@ -311,18 +286,77 @@ header h1 {
     align-self: center;
     padding: 10px 0;
     font-size: 24px;
+    font-family: 'Space Mono', monospace;
 }
 
 .card .card-body .assignment {
     align-self: flex-start;
     font-size: 19px;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .card .card-body .date {
     align-self: flex-end;
     color: black;
     font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
 }
+
+.card .card-body .status {
+    background-color: #f7b500;
+    max-width: fit-content;
+    font-weight: 900;
+    font-family: 'Space Grotesk', sans-serif;
+    
+}
+
+.card .card-body .buttons {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.card .card-body .buttons .doneBtn {
+    width: 50%;
+    font-size: 20px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    outline: none;
+}
+
+.card .card-body .buttons .doneBtn:hover {
+    background-color: lime;
+    transition: all 0.5s ease;
+    opacity: 0.7;
+}
+
+.card .card-body .buttons .deleteBtn {
+    width: 50%;
+    font-size: 20px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    outline: none;
+}
+
+.card .card-body .buttons .deleteBtn:hover {
+    background-color: red;
+    transition: all 0.5s ease;
+}
+
+#done-task {
+    background-color: lime;
+}
+
+
 
 
 
