@@ -260,7 +260,7 @@ header h1 {
 /* ------------------------------Card---------------------------------- */
 ul li .card {
     display: block;
-    background: url('/assets/images/desktop-wallpaper-galaxy-planet.jpg');
+    background: url('../images/desktop-wallpaper-galaxy-planet.jpg');
     color: white;
     background-position: 0px 0px;
     background-size: cover;
