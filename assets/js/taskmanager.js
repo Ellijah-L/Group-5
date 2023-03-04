@@ -98,8 +98,8 @@ class TaskManager {
       const task = this.tasks[i];
       if (task.id != taskId) {
         newTasks.push(task)
-        this.tasks = newTasks;
       }
+      this.tasks = newTasks;
     }
   }
 }
